@@ -1,0 +1,27 @@
+{
+  "name": "book-store",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@rematch/core": "^1.0.0-beta.4",
+    "antd": "^3.7.3",
+    "glamor": "^2.20.40",
+    "i18next": "^11.5.0",
+    "i18next-browser-languagedetector": "^2.2.2",
+    "i18next-xhr-backend": "^1.5.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-i18next": "^7.10.1",
+    "react-redux": "^5.0.7",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "styled-components": "^3.3.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
