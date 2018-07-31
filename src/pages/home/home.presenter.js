@@ -21,8 +21,8 @@ const FlexElement = styled.div`
 `;
 
 const Link = styled.a`
-  color: #3E7EFF;
-`
+  color: #3e7eff;
+`;
 
 const widthMax = css({
   width: "600px"
@@ -30,27 +30,29 @@ const widthMax = css({
 
 const spaceLeft = css({
   paddingLeft: "10px"
-})
+});
 
 const flexColumn = css({
-  flexDirection: 'column'
-})
+  flexDirection: "column"
+});
 
 const justifyBetween = css({
   justifyContent: "space-between"
-})
+});
 
 const justifyEnd = css({
   justifyContent: "flex-end"
-})
-
-const spaceTop = css({
-  paddingTop: "20px",
 });
 
-// const bookListRender = (list) => {
-//   return 
-// }
+const spaceTop = css({
+  paddingTop: "20px"
+});
+
+const bookListRender = list => {
+  return list.map(e => {
+    return <BookCover src={e.src} title={e.title} />;
+  });
+};
 
 const Presenter = ({ t, i18n }) => (
   <PageContainer>
@@ -75,10 +77,28 @@ const Presenter = ({ t, i18n }) => (
         <Link {...spaceLeft}>Book of the week</Link>
       </FlexElement>
       <FlexElement {...widthMax} {...justifyBetween} {...spaceTop}>
-        <BookCover src="https://storage.naiin.com/system/application/bookstore/resource/product/201807/238469/1000209102_front_XL.jpg" title="จงทำสวนของเรา" rate={3} />
-        <BookCover src="https://storage.naiin.com/system/application/bookstore/resource/product/201807/239070/1000209459_front_XL.jpg" title="อยากสำเร็จให้ยิ่งใหญ่ต้องทำทีมก้าวไปกับคุณ" rate={3.5} />
-        <BookCover src="https://storage.naiin.com/system/application/bookstore/resource/product/201807/238952/1000209386_front_XL.jpg" title="แบบฝึกหัด คัด เขียน อ่าน ภาษาเกาหลี เบื้องต้น" rate={4} />
-        <BookCover src="https://storage.naiin.com/system/application/bookstore/resource/product/201807/239071/1000209460_front_XL.jpg" title="มองหาคุณค่าชีวิต" rate={3.5} />
+        {bookListRender([
+          {
+            src:
+              "https://storage.naiin.com/system/application/bookstore/resource/product/201807/238469/1000209102_front_XL.jpg",
+            title: "จงทำสวนของเรา"
+          },
+          {
+            src:
+              "https://storage.naiin.com/system/application/bookstore/resource/product/201807/239070/1000209459_front_XL.jpg",
+            title: "อยากสำเร็จให้ยิ่งใหญ่ต้องทำทีมก้าวไปกับคุณ"
+          },
+          {
+            src:
+              "https://storage.naiin.com/system/application/bookstore/resource/product/201807/238952/1000209386_front_XL.jpg",
+            title: "แบบฝึกหัด คัด เขียน อ่าน ภาษาเกาหลี เบื้องต้น"
+          },
+          {
+            src:
+              "https://storage.naiin.com/system/application/bookstore/resource/product/201807/239071/1000209460_front_XL.jpg",
+            title: "มองหาคุณค่าชีวิต"
+          }
+        ])}
       </FlexElement>
       <FlexElement {...widthMax} {...spaceTop} {...justifyEnd}>
         <Link>{t("home.see-more")}</Link>
