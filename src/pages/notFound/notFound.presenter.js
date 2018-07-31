@@ -2,7 +2,7 @@ import React from 'react';
 
 const Presenter = ({}) => (
   <div>
-    <p>404 - Not Found</p>
+    <p>404 - Not Found :P</p>
   </div>
 )
 
