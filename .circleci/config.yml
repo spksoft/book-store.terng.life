@@ -5,35 +5,20 @@
 version: 2
 jobs:
   build:
+    branches:
+      only:
+        - master
     docker:
-      # specify the version you desire here
-      - image: circleci/node:7.10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
-    working_directory: ~/repo
-
+      - image: alpine
+    working_directory: ~
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: yarn install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-        
-      # run tests!
-      - run: yarn test
-
-
+      - run: apk update
+      - run: apk add openssh
+      - run: rm -rf ~/.ssh
+      - run: mkdir ~/.ssh
+      - run: echo $privatekey > temp_base64_private
+      - run: base64 -d temp_base64_private > ~/.ssh/id_rsa
+      - run: chmod 600 ~/.ssh/id_rsa
+      - run: rm -rf temp_base64_private
+      - run: ssh -o "StrictHostKeyChecking no" -t $host_username@$host_ip "source ~/script-clone-bookstore.sh"
